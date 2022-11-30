@@ -57,6 +57,10 @@ export const SProduct = styled.div`
     font-weight: 700;
     font-size: 12px;
 
+    @media (max-width: 414px) {
+      width: 250px;
+    }
+
     div {
       display: flex;
       justify-content: center;

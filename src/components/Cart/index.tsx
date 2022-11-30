@@ -6,8 +6,7 @@ import CartDetails from './CartDetails';
 import {
   SChanges,
   SDetails,
-  SFinish,
-  SProduct,
+  SFinish, SInfos, SProduct,
   SWrapper
 } from './styles';
 
@@ -41,7 +40,7 @@ const Cart = ({}) => {
         !cart || cart.length === 0 ? (
           <CartDetails
             text={ 'Parece que não há nada por aqui :(' }
-            url={ 'https://user-images.githubusercontent.com/99758843/204859335-2edb0021-b6d0-4768-8a2f-1616ce9862f4.png' }
+            url={ 'https://user-images.githubusercontent.com/99758843/204913857-9ca53e98-a312-4967-9d15-bcd6e315061c.png' }
           />
         ) : (
           <SWrapper>
@@ -50,21 +49,25 @@ const Cart = ({}) => {
                 <picture>
                   <img src={ image } alt={ title } />
                 </picture>
-                <SDetails>
-                  <p>{ title }</p>
-                  <p>{ price }</p>
-                </SDetails>
-                <SChanges>
-                  <MinusCircle size={25} color="#4a8ef3" onClick={() => setCount(count - 1)} />
-                  <span>{ count }</span>
-                  <PlusCircle size={25} color="#4a8ef3" onClick={() => setCount(count + 1)} />
-                </SChanges>
-                <p>{ price }</p>
-                <Trash size={25}
-                  color="#f50808"
-                  onClick={() => removeProduct(id)}
-                  style={{ cursor: 'pointer' }}
-                />
+                <div>
+                  <SDetails>
+                    <p>{ title }</p>
+                    <p>{`R$ ${ price }`}</p>
+                  </SDetails>
+                  <SChanges>
+                    <MinusCircle size={25} color="#4a8ef3" onClick={() => setCount(count - 1)} />
+                    <span>{ count }</span>
+                    <PlusCircle size={25} color="#4a8ef3" onClick={() => setCount(count + 1)} />
+                  </SChanges>
+                  <SInfos>
+                    <p>{`R$ ${ price }`}</p>
+                    <Trash size={25}
+                      color="#f50808"
+                      onClick={() => removeProduct(id)}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  </SInfos>
+                </div>
               </SProduct>
             ))}
             <hr />
@@ -82,7 +85,7 @@ const Cart = ({}) => {
       ) : (
         <CartDetails
           text={ 'Compra realizada com sucesso!' }
-          url={ 'https://user-images.githubusercontent.com/99758843/204860362-0db928aa-78d5-43ea-a661-9758ffd18621.png' }
+          url={ 'https://user-images.githubusercontent.com/99758843/204914200-ce7c072a-f337-4061-8765-71e8a6354474.png' }
         />
       )}
     </>

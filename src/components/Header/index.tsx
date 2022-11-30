@@ -1,10 +1,7 @@
 import Link from 'next/link';
-import { FC } from 'react';
 import { SCart, SHeader } from './styles';
 
-interface HeaderProps {}
-
-const Header: FC<HeaderProps> = ({}) => {
+const Header = ({}) => {
   return (
     <SHeader>
       <h1>We Movies</h1>

@@ -8,6 +8,15 @@ export const SHeader = styled.header`
   width: 100%;
   background-color: #2F2E41;
   height: 80px;
+
+  @media (max-width: 414px) {
+    h1 {
+      font-size: 20px;
+    }
+    h3 {
+      display: none;
+    }
+  }
 `;
 
 export const SCart = styled.div`

@@ -2,24 +2,30 @@ import styled from 'styled-components';
 
 export const SWrapperDetails = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  gap: 10px;
+  gap: 30px;
+  height: 550px;
+  width: 950px;
   background-color: white;
   color: #2F2E41;
-  width: 960px;
-  height: 600px;
+  border-radius: 4px;
+  padding: 24px;
   margin: 0 auto;
-
-  img {
-    height: 350px;
+  
+  @media (max-width: 414px) {
+    height: 100vh;
+    width: 100vw;
   }
 
   p {
-    font-weight: 700;
     font-size: 20px;
-    line-height: 27px;
+    font-weight: 700;
+  }
+
+  img {
+    height: 300px;
   }
 
   button {
@@ -48,6 +54,11 @@ export const SWrapper = styled.div`
   border-radius: 4px;
   padding: 24px;
   margin: 0 auto;
+
+  @media (max-width: 414px) {
+    height: 100vh;
+    width: 100vw;
+  }
 `;
 
 export const SProduct = styled.div`
@@ -71,6 +82,11 @@ export const SDetails = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  @media (max-width: 414px) {
+    flex-direction: row;
+    gap: 10px;
+  }
 `;
 
 export const SChanges = styled.div`
@@ -78,6 +94,17 @@ export const SChanges = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
+
+  @media (max-width: 414px) {
+    padding: 15px;
+  }
+`;
+
+export const SInfos = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const SFinish = styled.div`
@@ -99,7 +126,12 @@ export const SFinish = styled.div`
     text-align: center;
     font-weight: 700;
     font-size: 12px;
+
+    @media (max-width: 414px) {
+      width: 200px;
+    }
   }
+
 
   div {
     display: flex;
@@ -114,7 +146,7 @@ export const SFinish = styled.div`
 
     h1 {
       font-weight: 700;
-      font-size: 24px;
+      font-size: 20px;
     }
   }
 `;
