@@ -15,7 +15,6 @@ export const SWrapperDetails = styled.div`
   margin: 0 auto;
   
   @media (max-width: 414px) {
-    height: 100vh;
     width: 100vw;
   }
 
@@ -61,9 +60,24 @@ export const SWrapper = styled.div`
   }
 `;
 
+export const SNav = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  div {
+    margin-right: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    width: 300px;
+  }
+`;
+
 export const SProduct = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
 
@@ -79,21 +93,44 @@ export const SProduct = styled.div`
 `;
 
 export const SDetails = styled.div`
+  color: #2F2E41;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  width: 300px;
 
-  @media (max-width: 414px) {
-    flex-direction: row;
+  div {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
+
+    p {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+    }
+
+    h3 {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+    }
   }
 `;
 
 export const SChanges = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 8px;
+  width: 300px;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
 
   @media (max-width: 414px) {
     padding: 15px;

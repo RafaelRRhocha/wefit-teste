@@ -6,7 +6,7 @@ import CartDetails from './CartDetails';
 import {
   SChanges,
   SDetails,
-  SFinish, SInfos, SProduct,
+  SFinish, SNav, SProduct,
   SWrapper
 } from './styles';
 
@@ -44,30 +44,37 @@ const Cart = ({}) => {
           />
         ) : (
           <SWrapper>
+            <SNav>
+              <p>PRODUTO</p>
+              <div>
+                <p>QTD</p>
+                <p>SUBTOTAL</p>
+              </div>
+            </SNav>
             {cart?.map(({ id, title, price, image }: ProductsTypes) => (
               <SProduct key={ id }>
-                <picture>
-                  <img src={ image } alt={ title } />
-                </picture>
-                <div>
-                  <SDetails>
+                <SDetails>
+                  <picture>
+                    <img src={ image } alt={ title } />
+                  </picture>
+                  <div>
                     <p>{ title }</p>
-                    <p>{`R$ ${ price }`}</p>
-                  </SDetails>
-                  <SChanges>
+                    <h3>{`R$ ${ price }`}</h3>
+                  </div>
+                </SDetails>
+                <SChanges>
+                  <div>
                     <MinusCircle size={25} color="#4a8ef3" onClick={() => setCount(count - 1)} />
                     <span>{ count }</span>
                     <PlusCircle size={25} color="#4a8ef3" onClick={() => setCount(count + 1)} />
-                  </SChanges>
-                  <SInfos>
-                    <p>{`R$ ${ price }`}</p>
-                    <Trash size={25}
-                      color="#f50808"
-                      onClick={() => removeProduct(id)}
-                      style={{ cursor: 'pointer' }}
-                    />
-                  </SInfos>
-                </div>
+                  </div>
+                  <p>{`R$ ${ price }`}</p>
+                </SChanges>
+                <Trash size={ 25 }
+                  color="#f50808"
+                  onClick={() => removeProduct(id)}
+                  style={{ cursor: 'pointer' }}
+                />
               </SProduct>
             ))}
             <hr />

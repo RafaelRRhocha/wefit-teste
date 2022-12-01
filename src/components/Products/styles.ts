@@ -38,34 +38,37 @@ export const SProduct = styled.div`
     font-size: 16px;
     line-height: 22px;
   }
+`
 
-  button {
+export const SButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  width: 288px;
+  border-radius: 4px;
+  padding: 8px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  line-height: 16px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+
+  @media (max-width: 414px) {
+    width: 235px;
+  }
+
+  div {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    background-color: #009EDD;
-    height: 40px;
-    width: 288px;
-    border-radius: 4px;
-    padding: 8px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    line-height: 16px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 12px;
+    gap: 3px;
 
-    @media (max-width: 414px) {
-      width: 250px;
-    }
-
-    div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 3px;
+    p {
+      font-size: 12px;
     }
   }
-`
+`;
