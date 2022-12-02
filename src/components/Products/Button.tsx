@@ -1,13 +1,6 @@
-import { FC, useState } from 'react';
-import { createCart } from '../../localstorage';
+import { FC, useEffect, useState } from 'react';
+import { createCart, readCart } from '../../localstorage';
 import { SButton } from './styles';
-
-interface ProductsTypes {
-  id: number,
-  title: string,
-  price: number,
-  image: string
-}
 
 interface ButtonProps {
   id: number,
@@ -17,16 +10,29 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({ id, title, price, image }) => {
-  const [color, setColor] = useState('blue');
+  const [color, setColor] = useState(false);
+
+  const setButton = () => {
+    const cart = readCart();
+    setColor(cart.some((e: any) => e.title === title));
+  };
+
+  useEffect(() => {
+    setButton();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <SButton
       type="button"
       onClick={() => {
-        setColor('green');
+        setColor(true);
         createCart({ id, title, price, image });
       }}
-      style={{ backgroundColor: color }}
+      style={{
+        backgroundColor: !color ? '#009EDD' : '#039B00',
+        cursor: !color ? 'pointer' : 'default'
+      }}
     >
       <div>
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +40,7 @@ const Button: FC<ButtonProps> = ({ id, title, price, image }) => {
         </svg>
         <p>{` 0 `}</p>
       </div>
-      {`${ color === 'blue' ? 'Adicionar Ao Carrinho' : 'Item Adicionado'}`}
+      {`${ !color ? 'Adicionar Ao Carrinho' : 'Item Adicionado'}`}
     </SButton>
   );
 }

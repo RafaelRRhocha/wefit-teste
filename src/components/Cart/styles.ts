@@ -65,6 +65,13 @@ export const SNav = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  p {
+      color: #999999;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 19px;
+    }
+
   div {
     margin-right: 150px;
     display: flex;
@@ -72,6 +79,10 @@ export const SNav = styled.div`
     align-items: center;
     gap: 20px;
     width: 300px;
+  }
+
+  @media (max-width: 414px) {
+    display: none;
   }
 `;
 
@@ -89,6 +100,10 @@ export const SProduct = styled.div`
   p {
     font-size: 14px;
     font-weight: 700;
+  }
+
+  @media (max-width: 414px) {
+    flex-direction: column;
   }
 `;
 
@@ -117,6 +132,22 @@ export const SDetails = styled.div`
       line-height: 22px;
     }
   }
+
+  @media (max-width: 414px) {
+    div {
+      flex-direction: row;
+      align-items: center;
+      margin-top: -80px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    h3 {
+      font-size: 16px;
+    }
+  }
 `;
 
 export const SChanges = styled.div`
@@ -124,6 +155,7 @@ export const SChanges = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 300px;
+  user-select: none;
 
   div {
     display: flex;
@@ -132,8 +164,29 @@ export const SChanges = styled.div`
     gap: 8px;
   }
 
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    span {
+      display: none;
+      color: #999999;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
   @media (max-width: 414px) {
-    padding: 15px;
+    width: 170px;
+    margin: -80px 0 40px 90px;
+
+    section {
+      span {
+        display: block;
+      }
+    }
   }
 `;
 
@@ -142,6 +195,15 @@ export const SInfos = styled.div`
   gap: 8px;
   align-items: center;
   justify-content: center;
+`;
+
+export const SIcon = styled.div`
+  cursor: pointer;
+
+  @media (max-width: 414px) {
+    margin: -115px 0 115px 320px;
+  }
+
 `;
 
 export const SFinish = styled.div`

@@ -51,7 +51,6 @@ export const SButton = styled.button`
   padding: 8px;
   color: white;
   border: none;
-  cursor: pointer;
   line-height: 16px;
   text-align: center;
   font-weight: 700;

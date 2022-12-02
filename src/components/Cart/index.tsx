@@ -1,13 +1,10 @@
-import { MinusCircle, PlusCircle, Trash } from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import { deleteProducts, readCart } from '../../localstorage';
 import Header from '../Header';
 import CartDetails from './CartDetails';
+import Product from './Product';
 import {
-  SChanges,
-  SDetails,
-  SFinish, SNav, SProduct,
-  SWrapper
+  SFinish, SNav, SWrapper
 } from './styles';
 
 interface ProductsTypes {
@@ -19,7 +16,6 @@ interface ProductsTypes {
 
 const Cart = ({}) => {
   const [cart, setCart] = useState<any>(null);
-  const [count, setCount] = useState(1);
   const [mode, setMode] = useState('inprogress');
 
   useEffect(() => {
@@ -31,7 +27,6 @@ const Cart = ({}) => {
     deleteProducts(id);
     setCart((old: any) => old.filter((product: any) => product.id !== id));
   };
-
 
   return (
     <>
@@ -52,30 +47,9 @@ const Cart = ({}) => {
               </div>
             </SNav>
             {cart?.map(({ id, title, price, image }: ProductsTypes) => (
-              <SProduct key={ id }>
-                <SDetails>
-                  <picture>
-                    <img src={ image } alt={ title } />
-                  </picture>
-                  <div>
-                    <p>{ title }</p>
-                    <h3>{`R$ ${ price }`}</h3>
-                  </div>
-                </SDetails>
-                <SChanges>
-                  <div>
-                    <MinusCircle size={25} color="#4a8ef3" onClick={() => setCount(count - 1)} />
-                    <span>{ count }</span>
-                    <PlusCircle size={25} color="#4a8ef3" onClick={() => setCount(count + 1)} />
-                  </div>
-                  <p>{`R$ ${ price }`}</p>
-                </SChanges>
-                <Trash size={ 25 }
-                  color="#f50808"
-                  onClick={() => removeProduct(id)}
-                  style={{ cursor: 'pointer' }}
-                />
-              </SProduct>
+              <div key={ id }>
+                <Product removeProduct={() => removeProduct(id) } id={ id } title={ title } price={ price } image={ image } />
+              </div>
             ))}
             <hr />
             <SFinish>
@@ -84,7 +58,7 @@ const Cart = ({}) => {
               </button>
               <div>
                 <p>{`Total`}</p>
-                <h1>{`R$ ${29.90}`}</h1>
+                <h1>Preço Final</h1>
               </div>
             </SFinish>
           </SWrapper>

@@ -29,7 +29,7 @@ const Products = ({}) => {
               <img src={ image } alt={ title } />
             </picture>
             <p>{ title }</p>
-            <h3>{`R$ ${price}`}</h3> 
+            <h3>{ price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h3> 
             <Button id={ id } title={ title } price={ price } image={ image } />
           </SProduct>
         ))}
