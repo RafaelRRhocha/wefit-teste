@@ -1,23 +1,55 @@
 import { MinusCircle, PlusCircle, Trash } from 'phosphor-react';
 import { FC, useState } from 'react';
-import {
-  SChanges,
-  SDetails, SIcon, SProduct
-} from './styles';
+import { useAppData } from '../../context/hooks/useApp';
+import { ProductProps } from '../../interfaces';
+import { updateCart } from '../../localstorage';
+import { SChanges, SDetails, SIcon, SProduct } from './styles';
 
-interface ProductProps {
-  id: number,
-  title: string,
-  price: number,
-  image: string,
-  removeProduct: () => void
-}
+const Product: FC<ProductProps> = ({
+  id,
+  title,
+  price,
+  image,
+  qtd,
+  removeProduct,
+  totalValue
+}) => {
+  const { setCart, totalItems } = useAppData();
+  const [count, setCount] = useState<any>(qtd);
 
-const Product: FC<ProductProps> = ({ id, title, price, image, removeProduct }) => {
-  const [count, setCount] = useState(1);
+  const decreaseCount = () => {
+    setCount(count - 1);
+    const cartUpdated = updateCart(
+      {
+        id,
+        title,
+        price,
+        image,
+        qtd: count - 1,
+        newPrice: price * (count - 1)
+      });
+    totalValue(cartUpdated);
+    totalItems(cartUpdated);
+    setCart(cartUpdated);
+  }
+
+  const incrementCount = () => {
+    setCount(count + 1)
+    const cartUpdated = updateCart(
+      {
+        id,
+        title,
+        price,
+        image,
+        qtd: count + 1,
+        newPrice: price * (count + 1)
+      });
+    totalValue(cartUpdated);
+    totalItems(cartUpdated);
+    setCart(cartUpdated);
+  }
 
   return (
-    <>
     <SProduct key={ id }>
       <SDetails>
         <picture>
@@ -30,9 +62,17 @@ const Product: FC<ProductProps> = ({ id, title, price, image, removeProduct }) =
       </SDetails>
       <SChanges>
         <div>
-          <MinusCircle size={25} color="#4a8ef3" onClick={() => count > 1 && setCount(count - 1) } />
+          <MinusCircle
+          size={ 25 }
+            onClick={() => count > 1 && decreaseCount() }
+            style={{ cursor: count > 1 ? 'pointer' : 'not-allowed' }}
+          />
           <span>{ count }</span>
-          <PlusCircle size={25} color="#4a8ef3" onClick={() => setCount(count + 1)} />
+          <PlusCircle
+            size={ 25 }
+            onClick={() => incrementCount() }
+            style={{ cursor: 'pointer' }}
+          />
         </div>
         <section>
           <span>SUBTOTAL</span>
@@ -46,7 +86,6 @@ const Product: FC<ProductProps> = ({ id, title, price, image, removeProduct }) =
         />
       </SIcon>
     </SProduct>
-    </>
   );
 }
 

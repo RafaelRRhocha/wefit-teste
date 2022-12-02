@@ -19,7 +19,7 @@ export const SWrapperDetails = styled.div`
   }
 
   p {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
   }
 
@@ -162,6 +162,7 @@ export const SChanges = styled.div`
     justify-content: center;
     align-items: center;
     gap: 8px;
+    color: #4a8ef3;
   }
 
   section {

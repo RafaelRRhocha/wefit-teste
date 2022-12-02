@@ -1,14 +1,17 @@
 import Link from 'next/link';
+import { useAppData } from '../../context/hooks/useApp';
 import { SCart, SHeader } from './styles';
 
 const Header = ({}) => {
+  const { qnt } = useAppData();
+
   return (
     <SHeader>
       <h1>We Movies</h1>
       <SCart>
         <div>
           <h3>Meu Carrinho</h3>
-          <p>{`0 items`}</p>
+          <p>{`${qnt} ${ qnt === 1 ? 'item' : 'items' }`}</p>
         </div>
         <Link href="/cart">
           <svg width="30" height="26" viewBox="0 0 30 26" fill="none" xmlns="http://www.w3.org/2000/svg">

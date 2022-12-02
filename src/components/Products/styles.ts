@@ -57,7 +57,7 @@ export const SButton = styled.button`
   font-size: 12px;
 
   @media (max-width: 414px) {
-    width: 235px;
+    width: 220px;
   }
 
   div {

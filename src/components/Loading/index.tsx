@@ -1,9 +1,6 @@
-import type { FC } from 'react';
 import { SDiv } from './styles';
 
-interface LoadingProps {}
-
-const Loading: FC<LoadingProps> = ({}) => {
+const Loading = () => {
   return (
     <SDiv>
       <picture>

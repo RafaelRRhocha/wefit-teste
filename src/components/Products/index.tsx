@@ -1,29 +1,23 @@
 import { useEffect, useState } from 'react';
+import { IProducts } from '../../interfaces';
 import Loading from '../Loading';
 import Button from './Button';
 import { SProduct, SWrapper } from './styles';
 
-interface ProductsTypes {
-  id: number,
-  title: string,
-  price: number,
-  image: string
-}
-
 const Products = ({}) => {
-  const [projects, setProjects] = useState<any>(null);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     fetch('/api/products')
     .then(resp => resp.json())
-    .then(setProjects);
+    .then(setProducts);
   }, []);
 
   return (
     <>
-     {!projects ? <Loading />  : (
+     {!products ? <Loading />  : (
       <SWrapper>
-        {projects.map(({ id, title, price, image }: ProductsTypes) => (
+        {products.map(({ id, title, price, image }: IProducts) => (
           <SProduct key={ id }>
             <picture>
               <img src={ image } alt={ title } />
