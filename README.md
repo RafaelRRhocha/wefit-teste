@@ -63,6 +63,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ```
 └── src
   ├── components
+  ├── context
+  ├── interfaces
   ├── localStorage
   ├── pages
   ├── styles
@@ -71,6 +73,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 | Folder           | Description                                          |
 | ----------       | -------------------------------------------          |
 | **components**   | Folder with application components                   |
+| **context**      | Folder with application context API                  |
+| **interfaces**   | Folder with all application interfaces               |
 | **localStorage** | Folder with local storage methods                    |
 | **pages**        | Pages Routes                                         |
 | **styles**       | Application styles                                   |
