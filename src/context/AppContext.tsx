@@ -15,7 +15,11 @@ export const AppProvider: FC<AppProviderProps> = ({ children }) => {
   }
 
   const totalItems = (item: IProducts[]) => {
-    const getAllItems = item.reduce((acc: any, { qtd }) => acc + qtd, 0);
+    if (item) {
+      const getAllItems = item.reduce((acc: any, { qtd }) => acc + qtd, 0);
+      setQnt(getAllItems);
+    }
+    const getAllItems = cart.reduce((acc: any, { qtd }) => acc + qtd, 0);
     setQnt(getAllItems);
   }
 

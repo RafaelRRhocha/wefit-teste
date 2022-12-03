@@ -1,9 +1,14 @@
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { useAppData } from '../../context/hooks/useApp';
 import { SCart, SHeader } from './styles';
 
 const Header = ({}) => {
-  const { qnt } = useAppData();
+  const { qnt, totalItems } = useAppData();
+
+  useEffect(() => {
+    totalItems();
+  }, [totalItems])
 
   return (
     <SHeader>
