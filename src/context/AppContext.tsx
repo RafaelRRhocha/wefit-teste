@@ -14,9 +14,9 @@ export const AppProvider: FC<AppProviderProps> = ({ children }) => {
     setFinalPrice(getAllValues);
   }
 
-  const totalItems = (item: IProducts[]) => {
-    if (item) {
-      const getAllItems = item.reduce((acc: any, { qtd }) => acc + qtd, 0);
+  const totalItems = (itemCart: IProducts[]) => {
+    if (itemCart) {
+      const getAllItems = itemCart.reduce((acc: any, { qtd }) => acc + qtd, 0);
       setQnt(getAllItems);
     }
     const getAllItems = cart.reduce((acc: any, { qtd }) => acc + qtd, 0);
