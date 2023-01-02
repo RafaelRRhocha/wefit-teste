@@ -24,8 +24,8 @@ export const AppProvider: FC<AppProviderProps> = ({ children }) => {
   }
 
   useEffect(() => {
-    const getCart = readCart();
-    setCart(getCart);
+    const getProductCart = readCart();
+    setCart(getProductCart);
   }, []);
 
   const data = {
